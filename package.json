@@ -23,7 +23,8 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "prepare": "husky"
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.1"
@@ -38,8 +39,13 @@
     "@types/node": "^20.11.29",
     "changelogen": "^0.5.5",
     "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "nano-staged": "^0.8.0",
     "nuxt": "^3.11.1",
     "vitest": "^1.4.0"
+  },
+  "nano-staged": {
+    "*.{js,ts,vue}": "eslint --fix"
   },
   "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
 }
