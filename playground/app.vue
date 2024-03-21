@@ -1,8 +1,5 @@
 <template>
-  <div>
-    Nuxt Prisma playground!
-  </div>
+  <div>Nuxt Prisma playground!</div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
