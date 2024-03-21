@@ -1,0 +1,44 @@
+{
+  "name": "@lewebsimple/nuxt-prisma",
+  "version": "0.0.0",
+  "description": "Prisma module for Nuxt",
+  "repository": "lewebsimple/nuxt-prisma",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.29",
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.11.1",
+    "@nuxt/test-utils": "^3.12.0",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.57.0",
+    "nuxt": "^3.11.1",
+    "vitest": "^1.4.0"
+  },
+  "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
+}
