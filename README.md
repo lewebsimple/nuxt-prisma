@@ -24,7 +24,17 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add @lewebsimple/nuxt-prisma
 ```
 
-That's it! You can now use Prisma in your Nuxt app ✨
+Set up Prisma ORM with the init command of the Prisma CLI:
+
+```bash
+npx prisma init --datasource-provider sqlite
+```
+
+Model your data in the Prisma schema (see the [Quickstart guide](https://www.prisma.io/docs/getting-started/quickstart#2-model-your-data-in-the-prisma-schema)).
+
+The Prisma client is generated automatically before build in development and production (you should restart the development server each time the Prisma schema changes).
+
+That's it! You can now use the auto-imported `prisma` client in the server handlers of your Nuxt app ✨
 
 
 ## Contribution
