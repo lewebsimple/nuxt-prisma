@@ -8,15 +8,13 @@
 Prisma module for Nuxt for doing amazing things.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/@lewebsimple/nuxt-prisma?file=playground%2Fapp.vue) -->
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+- [🏀 Online playground](https://stackblitz.com/github/your-org/@lewebsimple/nuxt-prisma?file=playground%2Fapp.vue)
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- 🚀 Prisma client generation before build
+- 🪄 Auto-import `prisma` client on the server side
+- 🐛 Fix resolution of `.prisma/client/index-browser` (see [prisma#12504](https://github.com/prisma/prisma/issues/12504))
 
 ## Quick Setup
 
@@ -26,7 +24,7 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add @lewebsimple/nuxt-prisma
 ```
 
-That's it! You can now use Nuxt Prisma in your Nuxt app ✨
+That's it! You can now use Prisma in your Nuxt app ✨
 
 
 ## Contribution
@@ -50,9 +48,6 @@ That's it! You can now use Nuxt Prisma in your Nuxt app ✨
   # Run ESLint
   npm run lint
   
-  # Run Vitest
-  npm run test
-  npm run test:watch
   
   # Release new version
   npm run release

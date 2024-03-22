@@ -1,6 +1,7 @@
-import { addPlugin, createResolver, defineNuxtModule } from "@nuxt/kit";
+import { addServerScanDir, createResolver, defineNuxtModule, useLogger } from "@nuxt/kit";
+import { exec } from "child_process";
+import { createRequire } from "module";
 
-// Module options TypeScript interface definition
 export interface ModuleOptions {}
 
 export default defineNuxtModule<ModuleOptions>({
@@ -10,6 +11,31 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {},
   setup(options, nuxt) {
-    const resolver = createResolver(import.meta.url);
+    const logger = useLogger();
+
+    // Prisma client generation
+    const prismaCliPath = createResolver(nuxt.options.workspaceDir).resolve("node_modules/.bin/prisma");
+    const runPrismaGenerate = async () => {
+      await new Promise<void>((resolve, reject) => {
+        exec(`${prismaCliPath} generate`, (error) => {
+          if (error) reject(error);
+          else {
+            logger.success("Prisma client generated successfully.");
+            resolve();
+          }
+        });
+      });
+    };
+
+    // Generate Prisma client before build
+    nuxt.hooks.hook("build:before", runPrismaGenerate);
+
+    // Auto-import from runtime/server/utils
+    addServerScanDir(createResolver(import.meta.url).resolve("./runtime/server"));
+
+    // Fix resolution of .prisma/client/index-browser
+    nuxt.options.alias[".prisma/client/index-browser"] = createRequire(import.meta.url)
+      .resolve("@prisma/client")
+      .replace("@prisma/client/default.js", ".prisma/client/index-browser.js");
   },
 });
