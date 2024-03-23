@@ -12,7 +12,7 @@ Prisma module for Nuxt for doing amazing things.
 
 ## Features
 
-- 🚀 Prisma client generation before build
+- 🚀 Prisma client generation before build and optionnally when schema changes
 - 🪄 Auto-import `prisma` client on the server side
 - 🐛 Fix resolution of `.prisma/client/index-browser` (see [prisma#12504](https://github.com/prisma/prisma/issues/12504))
 
@@ -36,6 +36,14 @@ The Prisma client is generated automatically before build in development and pro
 
 That's it! You can now use the auto-imported `prisma` client in the server handlers of your Nuxt app ✨
 
+## Options
+
+### watchSchema
+
+Run `prisma generate` automatically when `scheme.prisma` changes.
+
+- Type: `boolean`
+- Default: true
 
 ## Contribution
 
