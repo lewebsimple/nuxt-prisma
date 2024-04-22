@@ -1,6 +1,6 @@
 {
   "name": "@lewebsimple/nuxt-prisma",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Prisma module for Nuxt",
   "repository": "lewebsimple/nuxt-prisma",
   "license": "MIT",
